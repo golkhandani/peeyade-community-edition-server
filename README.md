@@ -10,14 +10,6 @@ All the outputs of services are dto
 
 Only used by repositories;
 
-## Food and beverage easy manager
-
-<p align="center">
-  <img width="300" height="300" src="Logo.png">
-</p>
-
-###### WIP: description
-
 ## Project folders
 
 ```
@@ -32,26 +24,12 @@ Only used by repositories;
     │   │   ├── pipe
     │   │   ├── token
     │   │   ├── transformer
+    |   |   ├── middleware
     │   │   ├── common.config.ts
     │   │   └── common.module.ts
     │   ├── management
     │   ├── operation             # Include business components' logic, dto and entity
-    │   │   ├── place
-    │   │   ├── country
-    │   │   ├── floor
-    │   │   ├── ingredient
-    │   │   ├── ingredient-category
-    │   │   ├── menu
-    │   │   ├── menu-category
-    │   │   ├── menu-item
-    │   │   ├── menu-modifier-group
-    │   │   ├── stock
-    │   │   ├── stock-variance
-    │   │   ├── supplier
-    │   │   ├── table
-    │   │   ├── user
-    │   │   ├── user-auth
-    │   │   ├── user-role
+    │   │   ├── pivot
     │   │   └── ...
     └── ...
 ```
@@ -129,35 +107,3 @@ Each component should have structure as below:
     ├── [component].repository.ts   # Database queries of component
     └── [component].module.ts       # NestJS Module of component
 ```
-
-### Operation -> place:
-
-### Operation -> country:
-
-### Operation -> floor:
-
-### Operation -> ingredient:
-
-### Operation -> ingredient-category:
-
-### Operation -> menu:
-
-### Operation -> menu-category:
-
-### Operation -> menu-item:
-
-### Operation -> menu-modifier-group:
-
-### Operation -> stock:
-
-### Operation -> stock-variance:
-
-### Operation -> supplier:
-
-### Operation -> table:
-
-### Operation -> user:
-
-### Operation -> user-auth:
-
-### Operation -> user-role:

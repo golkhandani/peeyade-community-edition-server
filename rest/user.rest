@@ -1,0 +1,109 @@
+@hostname = http://localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+
+@tenant = Fabizi
+
+@contentType = application/json
+
+@entity = user
+
+
+// Manager: 5ffac5dc18776d454cbd066c
+POST {{host}}/{{entity}} HTTP/1.1
+x-tenant: {{tenant}}
+content-type: {{contentType}}
+
+{
+        "avatar": {
+            "original": "http://cdn.rms-storage.com/original/2ef267b8-75d9-11eb-9439-0242ac130002.png",
+            "thumbnails": {
+                "256x256": "http://cdn.rms-storage.com/thumbnails/2ef267b8-75d9-11eb-9439-0242ac130002-256x256.png",
+                "512x512": "http://cdn.rms-storage.com/thumbnails/2ef267b8-75d9-11eb-9439-0242ac130002-512x512.png",
+                "768x768": "http://cdn.rms-storage.com/thumbnails/2ef267b8-75d9-11eb-9439-0242ac130002-768x768.png",
+                "1024x1024": "http://cdn.rms-storage.com/thumbnails/2ef267b8-75d9-11eb-9439-0242ac130002-1024x1024.png"
+            }
+        },
+        "firstName": "Armin",
+        "lastName": "Ebrahimi",
+        "gender": "male",
+        "email": "armin@coochini.ae",
+        "phones": [
+            {
+                "prefix": "+98",
+                "number": "9377500625",
+                "primary": true
+            }
+        ],
+        "password": "6794",
+        "authorities": [
+            {
+                "place": "603f4610eea07b1330124507",
+                "roles": ["603f4591eea07b1330124504", "603f45d3eea07b1330124505"],
+                "permissions": [
+                    "User:Read",
+                    "User:Create",
+                    "User:Update",
+                    "User:Delete"
+                ]
+            }
+        ]
+    }
+
+###
+
+
+
+
+GET {{host}}/{{entity}} HTTP/1.1
+x-tenant: {{tenant}}
+Authorization: 2015.908706554488
+###
+@staffId = 5ffaa755a193360478c5f3c0
+
+GET {{host}}/{{entity}}/{{staffId}} HTTP/1.1
+x-tenant: {{tenant}}
+###
+
+
+
+PUT {{host}}/{{entity}}/{{staffId}} HTTP/1.1
+x-tenant: {{tenant}}
+content-type: {{contentType}}
+
+{
+    "picture": {
+        "originalPath":"https://some-url.com/some-pic1.jpeg",
+        "thumbnails": {
+            "320":"https://some-url.com/some-pic1-320.jpeg"
+        }
+    },
+    "firstName":"Mohammadreza1",
+    "lastName": "Rahimiangolkhandani721",
+    "gender":"Male",
+    "email": "golkhandani@test.com",
+    "password": "1234567890",
+    "phone": [{
+        "primary": true,
+        "number": "9128064914",
+        "prefix": "+98"
+    }]
+}
+
+###
+PATCH {{host}}/{{entity}}/{{staffId}}/Active HTTP/1.1
+x-tenant: {{tenant}}
+content-type: {{contentType}}
+
+{
+   "active": true
+}
+
+###
+DELETE  {{host}}/{{entity}}/{{staffId}} HTTP/1.1
+x-tenant: {{tenant}}
+content-type: {{contentType}}
+
+
+
+

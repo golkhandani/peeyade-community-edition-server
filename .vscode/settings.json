@@ -1,0 +1,14 @@
+{
+    "cSpell.words": [
+        "Fabizi",
+        "endregion",
+        "hgetall",
+        "hset",
+        "nestjs",
+        "zipcode"
+    ],
+    "editor.formatOnSave": true,
+    // "editor.codeActionsOnSave": {
+    //     "source.organizeImports": true,
+    // }
+}

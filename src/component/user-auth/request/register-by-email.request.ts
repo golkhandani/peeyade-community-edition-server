@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus } from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
 import { IsDefined, IsEmail, IsNotEmpty, NotEquals, ValidateIf } from 'class-validator';
 
 export class RegisterByEmailAddressBodyRequest {
@@ -15,6 +15,9 @@ export class RegisterByEmailVerificationBodyRequest {
   email: string;
 
   @IsDefined()
+  username: string;
+
+  @IsDefined()
   session: string;
 
   @IsNotEmpty()
@@ -25,11 +28,14 @@ export class RegisterByEmailVerificationBodyRequest {
   @IsDefined()
   password: string;
 
+  @IsDefined()
   @ValidateIf((o, value) => {
     if ((o as RegisterByEmailVerificationBodyRequest).password === value) {
       return true;
     } else {
-      throw new HttpException('Re-entered password doesn\'t match', HttpStatus.BAD_REQUEST);
+      throw new BadRequestException([
+        'reEnteredPassword Re-entered password doesn\'t match'
+      ]);
     }
   })
   reEnteredPassword: string;

@@ -7,9 +7,23 @@ import { UserRegistration } from "../enum/user-registration.enum";
 
 export type DeviceInfo = Map<string, string>;
 
+
+export class TokenInfo {
+    refreshToken: string;
+
+    accessToken: string;
+
+    tokenType: string;
+}
+
+export class UserRegisterInfo {
+    username: string;
+
+    password: string;
+}
+
+
 export class UserSession {
-
-
 
     refreshToken?: string;
 
@@ -31,6 +45,9 @@ export class UserSession {
 
     constructor(data: Partial<UserSession>) {
         if (data) {
+            this.accessToken = data.accessToken || null;
+            this.refreshToken = data.refreshToken || null;
+            this.tokenType = data.tokenType || null;
             this.createdAt = new Date();
             this.updatedAt = new Date();
             this.__v = 1;
@@ -48,6 +65,8 @@ export class User {
     name: string;
 
     username: string;
+
+    password: string;
 
     avatar?: Media;
 

@@ -27,7 +27,8 @@ export class UserAuthController {
 
   @Post('register/username')
   async registerByUsername(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() registerByUsernameBody: RegisterByUsernameBodyRequest
   ) {
     return await this.userAuthService.registerByUsername(registerByUsernameBody);
@@ -35,7 +36,8 @@ export class UserAuthController {
 
   @Post('login/username')
   async loginByUsername(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() loginByUsernameBody: LoginByUsernameBodyRequest,
   ) {
     return await this.userAuthService.loginByUsername(loginByUsernameBody);
@@ -59,15 +61,21 @@ export class UserAuthController {
 
   @Post('register/email/verification')
   async registerByEmailVerification(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() registerByEmailVerificationBody: RegisterByEmailVerificationBodyRequest
   ) {
-    return await this.userAuthService.registerByEmailVerification(registerByEmailVerificationBody);
+    return await this.userAuthService
+      .registerByEmailVerification(
+        deviceIdentifierHeader,
+        registerByEmailVerificationBody
+      );
   }
 
   @Post('register/email/verification/resend')
   async registerByEmailVerificationResend(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() registerByEmailVerificationResendBody: RegisterByEmailVerificationResendBodyRequest,
   ) {
     return await this.userAuthService.registerByEmailVerificationResend(registerByEmailVerificationResendBody)
@@ -75,10 +83,11 @@ export class UserAuthController {
 
   @Post('login/email')
   async loginByEmail(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() loginByEmailBody: LoginByEmailBodyRequest,
   ) {
-    return await this.userAuthService.loginByEmail(loginByEmailBody);
+    return await this.userAuthService.loginByEmail(deviceIdentifierHeader, loginByEmailBody);
   }
 
 
@@ -86,7 +95,8 @@ export class UserAuthController {
 
   @Post('register/phone/number')
   async registerByPhoneNumber(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() registerByPhoneNumberBody: RegisterByPhoneNumberBodyRequest
   ) {
     return await this.userAuthService.registerByPhoneNumber(registerByPhoneNumberBody);
@@ -94,7 +104,8 @@ export class UserAuthController {
 
   @Post('register/phone/verification')
   async registerByPhoneVerification(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() registerByPhoneVerificationBody: RegisterByPhoneVerificationBodyRequest
   ) {
     return await this.userAuthService.registerByPhoneVerification(registerByPhoneVerificationBody);
@@ -102,7 +113,8 @@ export class UserAuthController {
 
   @Post('register/phone/verification/resend')
   async registerByPhoneVerificationResend(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() registerByPhoneVerificationResendBody: RegisterByPhoneVerificationResendBodyRequest,
   ) {
     return await this.userAuthService.registerByPhoneVerificationResend(registerByPhoneVerificationResendBody)
@@ -117,7 +129,8 @@ export class UserAuthController {
 
   @Post('login/google')
   async loginByGoogle(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() loginByGoogleBody: LoginByGoogleBodyRequest,
   ) {
     return await this.userAuthService.loginByGoogle(loginByGoogleBody);
@@ -125,7 +138,8 @@ export class UserAuthController {
 
   @Post('refresh')
   async refreshAuth(
-    @Headers() deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
+    @ValidatedHeader(DeviceIdentifierHeaderRequest)
+    deviceIdentifierHeader: DeviceIdentifierHeaderRequest,
     @Body() refreshAuthBody: RefreshAuthBodyRequest
   ) {
     return await this.userAuthService.refreshAuth(refreshAuthBody);

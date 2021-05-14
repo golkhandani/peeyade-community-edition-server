@@ -14,53 +14,53 @@ import { Address } from "cluster";
 import { ObjectId } from "mongodb";
 
 export class FindOnePivotResponse {
-    
-    _id: ObjectId;
 
-    type: PivotType; //! index
+  _id: ObjectId;
 
-    status: Status; //! index
+  type: PivotType; //! index
 
-    title: string;
+  status: Status; //! index
 
-    subtitle: string;
+  title: string;
 
-    slug: string; //! index
+  subtitle: string;
 
-    description: string;
+  slug: string; //! index
 
-    media: Media[];
+  description: string;
 
-    content: Content[];
+  media: Media[];
 
-    tags: Tag[]; //! index
+  content: Content[];
 
-    metaTags: MetaTag[];
+  tags: Tag[]; //! index
 
-    note?: string;
+  metaTags: MetaTag[];
+
+  note?: string;
 
 
 
-    // Place
-    contacts: Contact[];
+  // Place
+  contacts: Contact[];
 
-    rates: Rate[];
+  rates: Rate[];
 
-    contentWriter: ContentWriter;
-    
-    discoverer?: ContentWriter;
+  contentWriter: ContentWriter;
 
-    address: Address;
+  discoverer?: ContentWriter;
 
-    attributes: Attribute[];
+  address: Address;
 
-    createdAt: Date;
+  attributes: Attribute[];
 
-    updatedAt: Date;
+  createdAt: Date;
 
-    deletedAt: Date;
+  updatedAt: Date;
 
-    __v: number;
+  deletedAt: Date;
+
+  __v: number;
 
 
 }

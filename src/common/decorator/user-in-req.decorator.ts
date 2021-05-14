@@ -1,5 +1,5 @@
+import { UserType } from "@component/user/enum/user-type";
 import { Gender } from "@enum/Gender";
-import { UserType } from "@enum/UserType";
 import { defaultDpi, DPI, Media } from "@model/Media";
 import { createParamDecorator, ExecutionContext, UnauthorizedException } from "@nestjs/common";
 import { ObjectId } from "bson";

@@ -10,8 +10,9 @@ export class Contact {
     iconURL: string;
     url: string;
     verified: boolean;
-    constructor(data: Contact) {
+    constructor(data: Partial<Contact>) {
         if (data) {
+            this.iconURL = "https://peeyade.com" + data.type + ".jpeg"
             return Object.assign(this, data);
         }
     }

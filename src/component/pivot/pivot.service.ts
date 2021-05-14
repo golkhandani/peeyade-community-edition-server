@@ -12,36 +12,36 @@ import { FindAllPivotResponse } from './response/find-all-pivot.response';
 
 @Injectable()
 export class PivotService {
-    constructor(
-        private readonly postRepository: PivotRepository
-    ) { }
+  constructor(
+    private readonly postRepository: PivotRepository
+  ) { }
 
-    /**
-     * if you want to change value to a class and validate its value 
-     * uncomment below line
-     * personally I prefer in code transformation
-     * is much more flexible
-     */
-    // @TransformAndValidate(FindAllPivotResponse)
-    async findAll(user: UserInRequest, findAllPivotQuery: FindAllPivotQuery)
-        : Promise<FindAllPivotResponse[]> {
-        // * To confirm model and transform it to needed output
-        const pivots = await this.postRepository.findAll(user._id, findAllPivotQuery);
-        if (findAllPivotQuery.output == PivotOutput.summary) {
-            const result = plainToClass(FindAllPivotResponse, pivots);
-            return result;
-        } else {
-            const result = plainToClass(FindAllPivotResponse, pivots,
-                {
-                    groups: [PivotOutput.full]
-                });
-            return result;
-        }
-
+  /**
+   * if you want to change value to a class and validate its value 
+   * uncomment below line
+   * personally I prefer in code transformation
+   * is much more flexible
+   */
+  // @TransformAndValidate(FindAllPivotResponse)
+  async findAll(user: UserInRequest, findAllPivotQuery: FindAllPivotQuery)
+    : Promise<FindAllPivotResponse[]> {
+    // * To confirm model and transform it to needed output
+    const pivots = await this.postRepository.findAll(user._id, findAllPivotQuery);
+    if (findAllPivotQuery.output == PivotOutput.summary) {
+      const result = plainToClass(FindAllPivotResponse, pivots);
+      return result;
+    } else {
+      const result = plainToClass(FindAllPivotResponse, pivots,
+        {
+          groups: [PivotOutput.full]
+        });
+      return result;
     }
 
-    async findOneById(id: ObjectId): Promise<any> {
-        return await this.postRepository.findOneById(id);
-    }
+  }
+
+  async findOneById(id: ObjectId): Promise<any> {
+    return await this.postRepository.findOneById(id);
+  }
 
 }
